@@ -1,12 +1,15 @@
-sudo: false
+sudo: required
 dist: trusty
 
 addons:
-  chrome: stable
+  chrome: stable --no-sandbox
 
 language: node_js
 node_js:
   - "lts/*"
+
+before_install:
+
 
 install:
   - npm install
