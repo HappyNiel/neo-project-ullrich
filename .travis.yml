@@ -19,3 +19,10 @@ install:
 cache:
   directories:
     - "node_modules"
+
+notifications:
+  email:
+    recipients:
+      - nielhekkens@neo-endurance.com
+    on_success: always # default: change
+    on_failure: always # default: always
