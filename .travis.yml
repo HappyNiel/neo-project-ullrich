@@ -5,14 +5,13 @@ addons:
   chrome: stable
 
 before_install:
-  - google-chrome-stable --no-sandbox
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 
 language: node_js
 node_js:
   - "lts/*"
-
-before_install:
-
 
 install:
   - npm install
