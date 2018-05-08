@@ -6,6 +6,21 @@ Project Ullrich is the team management system for NEO Endurance Series league. W
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+### Prerequisites
+* Install latest LTS version [NodeJS](https://nodejs.org/en/).
+* Install CLI for [Angular](https://cli.angular.io).
+
+### Installing
+1. Clone the repository.
+2. Install dependencies:
+```
+npm install
+```
+3. Deploy the application locally:
+```
+ng serve
+```
+
 ## Built With
 * [Angular](https://angular.io) - The front-end framework used
 
