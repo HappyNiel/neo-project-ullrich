@@ -2,7 +2,10 @@ sudo: required
 dist: trusty
 
 addons:
-  chrome: stable --no-sandbox
+  chrome: stable
+
+before_install:
+  - google-chrome-stable --no-sandbox
 
 language: node_js
 node_js:
