@@ -11,14 +11,21 @@ before_install:
 
 language: node_js
 node_js:
-  - "lts/*"
+  - node
 
 install:
   - npm install
 
+before_script:
+  - npm install -g --silent @angular/cli
+
 cache:
   directories:
     - "node_modules"
+
+script:
+  - ng build --prod
+  - ng test
 
 notifications:
   email:
