@@ -25,7 +25,7 @@ passport.serializeUser(function(user, done) {
   done(null, user);
 });
 passport.deserializeUser(function(obj, done) {
-    var foundUser = UserTable.findOrCreateUserById(obj.id, obj, function(record){
+    var foundUser = UserTable.findOrCreateUserByDiscordId(obj.id, obj, function(record){
         console.log(`Auth gets: ${record}`);
         obj.airtableId = record.getId();
         done(null, obj);
@@ -56,7 +56,11 @@ app.use(passport.session());
 
 //routes
 var auth = require('./routes/authentication');
+var user = require('./routes/user');
+var team = require('./routes/team');
 app.use('/api/auth', auth);
+app.use('/api/user', user);
+app.use('/api/team', team);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
