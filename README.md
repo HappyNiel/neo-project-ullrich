@@ -16,10 +16,11 @@ These instructions will get you a copy of the project up and running on your loc
 ```
 npm install
 ```
-3. Deploy the application locally:
+3. Start Express server locally:
 ```
-ng serve
+npm start
 ```
+4. Open de browser and go to `localhost:3000`.
 
 ## Built With
 * [Angular](https://angular.io) - The front-end framework used
