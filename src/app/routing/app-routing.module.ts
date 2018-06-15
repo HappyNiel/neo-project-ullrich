@@ -1,10 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } 			from '@angular/core';
 
-import { AppComponent } 	from '../app.component';
 import { UsersComponent } 	from '../users/users.component';
 import { TeamsComponent } 	from '../teams/teams.component';
-import { EntriesComponent } from '../entries/entries.component';
 import { AdminComponent } 	from '../admin/admin.component';
 import { LoginComponent } 	from '../login/login.component';
 

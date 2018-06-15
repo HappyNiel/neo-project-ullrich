@@ -1,0 +1,27 @@
+@import 'general-styles';
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-size: 16px;
+}
+
+body{
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
+	color: $Text;
+	background-color: $White;
+
+	p{
+		margin: 0 0 0.75rem 0;
+		line-height: 1.5rem;
+	}
+}
+
+.container{
+	max-width: 1170px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
