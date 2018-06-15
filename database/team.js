@@ -39,9 +39,9 @@ TeamTable.prototype.getAllTeams = function(cb){
     }, function done(err) {
         if (err) { 
             console.error(err);
-            done(err, null); 
+            cb(err, null); 
         }
-        done(null, allTeams);
+        cb(null, allTeams);
     });
 }
 

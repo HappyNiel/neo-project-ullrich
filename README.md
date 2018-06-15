@@ -16,14 +16,23 @@ These instructions will get you a copy of the project up and running on your loc
 ```
 npm install
 ```
-3. Start Express server locally:
+3. Create .env file
+```
+DISCORD_SECRET=<secret>
+SESSION_SECRET=<not so secret>
+AIRTABLE_BASE=<not so secret>
+AIRTABLE_API_KEY=<secret>
+```
+4. Start Express server locally:
 ```
 npm start
 ```
-4. Open de browser and go to `localhost:3000`.
+5. Open de browser and go to `localhost:3000`.
 
 ## Built With
 * [Angular](https://angular.io) - The front-end framework used
+* [Express](https://expressjs.com/) - The back-end framework used
+* [Airtable](https://airtable.com/) - The database used
 
 ## Authors
 * **Niel Hekkens** - *Initial work* - [NEO Endurance](https://www.neo-endurance.com)

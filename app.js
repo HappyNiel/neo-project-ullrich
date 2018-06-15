@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -34,7 +35,6 @@ passport.deserializeUser(function(obj, done) {
 });
 
 var scopes = ['identify'];
-console.log(process.env.DISCORD_SECRET);
 passport.use(new Strategy({
     clientID: '443134608280780804',
     clientSecret: process.env.DISCORD_SECRET,
