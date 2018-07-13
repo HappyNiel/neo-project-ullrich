@@ -28,8 +28,8 @@ UserTable.prototype.findOrCreateUserByDiscordId = function (discordId, discordAu
         if(records.length == 0){
             console.log('Creating user');
             base('User').create({
-                // "Name": discordAuth.username,
-                "Discord": discordAuth.username,
+				"Discord": discordAuth.id,
+				"DiscordUsername": discordAuth.username,
                 "Email": discordAuth.email,
                 "AccessToken": discordAuth.accessToken
             }, function (err, record){
