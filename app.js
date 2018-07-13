@@ -36,7 +36,7 @@ passport.deserializeUser(function(obj, done) {
 
 var scopes = ['identify'];
 passport.use(new Strategy({
-    clientID: '443134608280780804',
+    clientID: '457106543561670665',
     clientSecret: process.env.DISCORD_SECRET,
     callbackURL: 'http://localhost:3000/api/auth/callback',
     scope: scopes

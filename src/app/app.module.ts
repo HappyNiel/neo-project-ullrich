@@ -11,6 +11,7 @@ import { UsersComponent } 					from './users/users.component';
 import { DriverRegistrationsComponent } 	from './driver-registrations/driver-registrations.component';
 import { AppRoutingModule } 				from './routing/app-routing.module';
 import { LoginComponent } 					from './login/login.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { LoginComponent } 					from './login/login.component';
 		AdminComponent,
 		UsersComponent,
 		DriverRegistrationsComponent,
-		LoginComponent
+		LoginComponent,
+		FooterComponent
 	],
 	imports: [
 		BrowserModule,
