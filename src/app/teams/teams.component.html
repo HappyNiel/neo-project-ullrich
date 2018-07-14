@@ -1,3 +1,21 @@
-<p>
-  teams works!
-</p>
+<div>
+  <h2>Teams</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Nationality</th>
+        <th>Website</th>
+        <th>Twitter</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let team of teams"> 
+            <td>{{ team.fields.Name }}</td>
+            <td>{{ team.fields.Nationality }}</td>
+            <td>{{ team.fields.Website }}</td>
+            <td>{{ team.fields.Twitter }}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
