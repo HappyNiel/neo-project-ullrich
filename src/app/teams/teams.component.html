@@ -18,4 +18,33 @@
         </tr>
     </tbody>
   </table>
+
+  <section>
+    <h3>Create a new Team</h3>
+    <form #f="ngForm" (ngSubmit)="createTeam()">
+        <p>
+            <label>Name:</label>
+            <input type="text" name="newTeam.Name"
+                [(ngModel)]="newTeam.Name" required>
+        </p>
+        <p>
+            <label>Nationality:</label>
+            <input type="text" name="newTeam.Nationality"  
+                [(ngModel)]="newTeam.Nationality">
+        </p>
+        <p>
+            <label>Website:</label>
+            <input type="text" name="newTeam.Website"  
+                [(ngModel)]="newTeam.Website">
+        </p>
+        <p>
+            <label>Twitter:</label>
+            <input type="text" name="newTeam.Twitter"  
+                [(ngModel)]="newTeam.Twitter">
+        </p>
+        <p>
+            <button type="submit" [disabled]="!f.valid">Submit</button>
+        </p>
+    </form>
+  </section>
 </div>

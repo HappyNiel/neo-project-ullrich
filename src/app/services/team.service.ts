@@ -11,4 +11,8 @@ export class TeamService {
   getTeams() {
     return this.http.get('/api/team');
   }
+
+  createTeam(team) {
+    return this.http.post('/api/team', team);
+  }
 }
