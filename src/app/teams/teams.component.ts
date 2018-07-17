@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamService } from '../services/team.service'
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-teams',
@@ -8,13 +9,15 @@ import { TeamService } from '../services/team.service'
 })
 export class TeamsComponent implements OnInit {
   public teams;
-  public newTeam: Object = {};
+  
+  newTeam: FormGroup;
+  
 
-  constructor(private _teamService: TeamService) { }
+  constructor(private _teamService: TeamService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.teams = [];
-    this.newTeam = {};
+    this.createForm();
     this.getTeams();
   }
 
@@ -26,9 +29,29 @@ export class TeamsComponent implements OnInit {
   }
 
   createTeam(){
-    this._teamService.createTeam(this.newTeam).subscribe(
-      data => { this.newTeam = {}; this.getTeams(); },
+    this._teamService.createTeam(this.buildSaveObject()).subscribe(
+      data => { this.newTeam.reset(); this.getTeams(); },
       err => { console.error(err) }
     );
+  }
+
+  buildSaveObject(){
+    let formModel = this.newTeam.value;
+
+    return {
+      Name: formModel.Name as String,
+      Nationality: formModel.Nationality as String,
+      Website: formModel.Website as String,
+      Twitter: formModel.Twitter as String
+    }
+  } 
+
+  createForm() {
+    this.newTeam = this.fb.group({
+      Name: ['', Validators.required ],
+      Nationality: '',
+      Website: '',
+      Twitter: ''
+    });
   }
 }

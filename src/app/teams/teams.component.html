@@ -21,29 +21,34 @@
 
   <section>
     <h3>Create a new Team</h3>
-    <form #f="ngForm" (ngSubmit)="createTeam()">
+    <form [formGroup]="newTeam" (ngSubmit)="createTeam()">
         <p>
             <label>Name:</label>
-            <input type="text" name="newTeam.Name"
-                [(ngModel)]="newTeam.Name" required>
+            <input type="text" formControlName="Name"/>
         </p>
         <p>
             <label>Nationality:</label>
-            <input type="text" name="newTeam.Nationality"  
-                [(ngModel)]="newTeam.Nationality">
+            <input 
+                type="text"
+                formControlName="Nationality"
+            />
         </p>
         <p>
             <label>Website:</label>
-            <input type="text" name="newTeam.Website"  
-                [(ngModel)]="newTeam.Website">
+            <input 
+                type="text"
+                formControlName="Website" 
+            />
         </p>
         <p>
             <label>Twitter:</label>
-            <input type="text" name="newTeam.Twitter"  
-                [(ngModel)]="newTeam.Twitter">
+            <input 
+                type="text"
+                formControlName="Twitter" 
+            />
         </p>
         <p>
-            <button type="submit" [disabled]="!f.valid">Submit</button>
+            <button type="submit" [disabled]="!newTeam.valid">Submit</button>
         </p>
     </form>
   </section>
