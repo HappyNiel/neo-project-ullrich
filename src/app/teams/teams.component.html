@@ -1,55 +1,49 @@
-<div>
-  <h2>Teams</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Nationality</th>
-        <th>Website</th>
-        <th>Twitter</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let team of teams"> 
-            <td>{{ team.fields.Name }}</td>
-            <td>{{ team.fields.Nationality }}</td>
-            <td>{{ team.fields.Website }}</td>
-            <td>{{ team.fields.Twitter }}</td>
-        </tr>
-    </tbody>
-  </table>
-
-  <section>
-    <h3>Create a new Team</h3>
-    <form [formGroup]="newTeam" (ngSubmit)="createTeam()">
-        <p>
-            <label>Name:</label>
-            <input type="text" formControlName="Name"/>
-        </p>
-        <p>
-            <label>Nationality:</label>
-            <input 
-                type="text"
-                formControlName="Nationality"
-            />
-        </p>
-        <p>
-            <label>Website:</label>
-            <input 
-                type="text"
-                formControlName="Website" 
-            />
-        </p>
-        <p>
-            <label>Twitter:</label>
-            <input 
-                type="text"
-                formControlName="Twitter" 
-            />
-        </p>
-        <p>
-            <button type="submit" [disabled]="!newTeam.valid">Submit</button>
-        </p>
-    </form>
-  </section>
+<h1>Teams</h1>
+<div class="TeamsContainer">
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Nationality</th>
+				<th>Website</th>
+				<th>Twitter</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let team of teams">
+				<td>{{ team.fields.Name }}</td>
+				<td>{{ team.fields.Nationality }}</td>
+				<td>{{ team.fields.Website }}</td>
+				<td>{{ team.fields.Twitter }}</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
+
+<section>
+	<h3>Create a new team</h3>
+	<form class="Form" [formGroup]="newTeam" (ngSubmit)="createTeam()">
+		<div class="Segment">
+			<label>Team name:</label>
+			<input type="text" formControlName="Name" />
+		</div>
+		<div class="Segment">
+			<label>Nationality:</label>
+			<input type="text" formControlName="Nationality" />
+		</div>
+		<div class="Segment">
+			<label>Website:</label>
+			<input type="text" formControlName="Website" />
+		</div>
+		<div class="Segment">
+			<label>Twitter:</label>
+			<input type="text" formControlName="Twitter" />
+		</div>
+		<button type="submit" class="Button" [disabled]="!newTeam.valid">
+			Create team
+		</button>
+		<button type="button" class="Button Ghost">
+			Cancel
+		</button>
+	</form>
+</section>

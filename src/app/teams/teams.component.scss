@@ -1,9 +1,17 @@
-table {
-    border-collapse: collapse;
-  }
-  
-  td, th {
-    border: 1px solid #999;
-    padding: 0.5rem;
-    text-align: left;
-  }
+input{
+	width: 12rem;
+}
+
+.TeamsContainer{
+	margin-bottom: 2rem;
+
+	table {
+		border-collapse: collapse;
+	}
+}
+
+td, th {
+	border: 1px solid #999;
+	padding: 0.5rem;
+	text-align: left;
+}

@@ -1,57 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamService } from '../services/team.service'
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
+import { TeamService } from '../services/team.service';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-teams',
-  templateUrl: './teams.component.html',
-  styleUrls: ['./teams.component.scss']
+	selector: 'app-teams',
+	templateUrl: './teams.component.html',
+	styleUrls: ['./teams.component.scss']
 })
 export class TeamsComponent implements OnInit {
-  public teams;
-  
-  newTeam: FormGroup;
-  
+	public teams;
 
-  constructor(private _teamService: TeamService, private fb: FormBuilder) { }
+	newTeam: FormGroup;
 
-  ngOnInit() {
-    this.teams = [];
-    this.createForm();
-    this.getTeams();
-  }
 
-  getTeams()  {
-    this._teamService.getTeams().subscribe(
-      data => { this.teams = data },
-      err => { console.error(err) }
-    );
-  }
+	constructor(private _teamService: TeamService, private formBuilder: FormBuilder) { }
 
-  createTeam(){
-    this._teamService.createTeam(this.buildSaveObject()).subscribe(
-      data => { this.newTeam.reset(); this.getTeams(); },
-      err => { console.error(err) }
-    );
-  }
+	ngOnInit() {
+		this.teams = [];
+		this.createForm();
+		this.getTeams();
+	}
 
-  buildSaveObject(){
-    let formModel = this.newTeam.value;
+	getTeams() {
+		this._teamService.getTeams().subscribe(
+			data => { this.teams = data; },
+			err => { console.error(err); }
+		);
+	}
 
-    return {
-      Name: formModel.Name as String,
-      Nationality: formModel.Nationality as String,
-      Website: formModel.Website as String,
-      Twitter: formModel.Twitter as String
-    }
-  } 
+	createTeam() {
+		this._teamService.createTeam(this.buildSaveObject()).subscribe(
+			data => { this.newTeam.reset(); this.getTeams(); },
+			err => { console.error(err); }
+		);
+	}
 
-  createForm() {
-    this.newTeam = this.fb.group({
-      Name: ['', Validators.required ],
-      Nationality: '',
-      Website: '',
-      Twitter: ''
-    });
-  }
+	buildSaveObject() {
+		const formModel = this.newTeam.value;
+
+		return {
+			Name: formModel.Name as String,
+			Nationality: formModel.Nationality as String,
+			Website: formModel.Website as String,
+			Twitter: formModel.Twitter as String
+		};
+	}
+
+	createForm() {
+		this.newTeam = this.formBuilder.group({
+			Name: ['', Validators.required],
+			Nationality: '',
+			Website: '',
+			Twitter: ''
+		});
+	}
 }

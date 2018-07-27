@@ -8,7 +8,7 @@ import {
 	FormControl,
 	Validators,
 	FormBuilder
-  } from "@angular/forms";
+} from '@angular/forms';
 
 
 import { AppComponent } 					from './app.component';
@@ -20,10 +20,10 @@ import { UsersComponent } 					from './users/users.component';
 import { DriverRegistrationsComponent } 	from './driver-registrations/driver-registrations.component';
 import { AppRoutingModule } 				from './routing/app-routing.module';
 import { LoginComponent } 					from './login/login.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } 					from './footer/footer.component';
 
-//services
-import { TeamService }						from './services/team.service'
+// Sservices
+import { TeamService }						from './services/team.service';
 
 
 @NgModule({

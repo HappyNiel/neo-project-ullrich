@@ -6,13 +6,13 @@ import {Observable} from 'rxjs/Observable';
 
 export class TeamService {
 
-  constructor(private http:HttpClient) {}
+	constructor(private http: HttpClient) {}
 
-  getTeams() {
-    return this.http.get('/api/team');
-  }
+	getTeams() {
+		return this.http.get('/api/team');
+	}
 
-  createTeam(team) {
-    return this.http.post('/api/team', team);
-  }
+	createTeam(team) {
+		return this.http.post('/api/team', team);
+	}
 }

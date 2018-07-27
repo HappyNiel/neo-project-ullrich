@@ -1,0 +1,37 @@
+@import "../general-styles";
+
+.Button {
+	font-size: 1rem;
+	font-weight: $Regular;
+	text-decoration: none;
+	padding: 0.5rem 1rem;
+	border-radius: 3px;
+	color: $White;
+	background-color: $NeoBlue;
+	border: 1px solid $NeoBlue;
+	text-align: center;
+	cursor: pointer;
+	display: inline-block;
+	transition: all 0.15s linear;
+	box-sizing: border-box;
+
+	&:hover{
+		background-color: $NeoDarkBlue;
+		border: 1px solid $NeoDarkBlue;
+	}
+
+	&.Ghost{
+		background: $White;
+		color: $NeoBlue;
+		border: 1px solid $NeoBlue;
+
+		&:hover{
+			background-color: $NeoBlue;
+			color: $White;
+		}
+
+		&:active{
+			background-color: $NeoDarkBlue;
+		}
+	}	
+}
