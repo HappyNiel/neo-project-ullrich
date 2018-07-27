@@ -65,7 +65,7 @@
 		<button type="submit" class="Button" [disabled]="!newTeamForm.valid">
 			Create team
 		</button>
-		<button type="button" class="Button Ghost">
+		<button type="button" class="Button Ghost" (click)="clearForm()">
 			Cancel
 		</button>
 	</form>

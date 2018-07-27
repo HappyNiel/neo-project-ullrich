@@ -45,4 +45,8 @@ export class TeamsComponent implements OnInit {
 			err => { console.error(err); }
 		);
 	}
+
+	public clearForm() {
+		this.signupForm.reset();
+	}
 }
