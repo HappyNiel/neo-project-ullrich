@@ -3,11 +3,7 @@ import { NgModule } 		from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import {
 	ReactiveFormsModule,
-	FormsModule,
-	FormGroup,
-	FormControl,
-	Validators,
-	FormBuilder
+	FormsModule
 } from '@angular/forms';
 
 
