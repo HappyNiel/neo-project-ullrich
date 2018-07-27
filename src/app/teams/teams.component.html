@@ -22,24 +22,47 @@
 
 <section>
 	<h3>Create a new team</h3>
-	<form class="Form" [formGroup]="newTeam" (ngSubmit)="createTeam()">
-		<div class="Segment">
-			<label>Team name:</label>
-			<input type="text" formControlName="Name" />
+	<form class="Form" (ngSubmit)="createTeam(newTeamForm)" #newTeamForm="ngForm">
+		<div class="Segment form-group">
+			<label for="name">Team name:</label>
+			<input
+				type="text"
+				id="name"
+				class="form-control"
+				name="name"
+				ngModel
+				required>
 		</div>
-		<div class="Segment">
-			<label>Nationality:</label>
-			<input type="text" formControlName="Nationality" />
+		<div class="Segment form-group">
+			<label for="nationality">Nationality:</label>
+			<input
+				type="text"
+				id="nationality"
+				class="form-control"
+				name="nationality"
+				ngModel
+				required>
 		</div>
-		<div class="Segment">
-			<label>Website:</label>
-			<input type="text" formControlName="Website" />
+		<div class="Segment form-group">
+			<label for="website">Website:</label>
+			<input 
+				type="url"
+				id="website"
+				class="form-control"
+				name="website"
+				ngModel>
 		</div>
-		<div class="Segment">
-			<label>Twitter:</label>
-			<input type="text" formControlName="Twitter" />
+		<div class="Segment form-group">
+			<label for="twitter">Twitter:</label>
+			<input 
+				type="text"
+				id="twitter"
+				class="form-control"
+				name="twitter"
+				placeholder="@TwitterHandle"
+				ngModel>
 		</div>
-		<button type="submit" class="Button" [disabled]="!newTeam.valid">
+		<button type="submit" class="Button" [disabled]="!newTeamForm.valid">
 			Create team
 		</button>
 		<button type="button" class="Button Ghost">

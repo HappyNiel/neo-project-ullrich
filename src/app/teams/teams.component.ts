@@ -1,23 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { TeamService } from '../services/team.service';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { TeamService } from "../services/team.service";
+import { FormGroup, FormControl, FormBuilder, Validators, NgForm } from "@angular/forms";
 
 @Component({
-	selector: 'app-teams',
-	templateUrl: './teams.component.html',
-	styleUrls: ['./teams.component.scss']
+	selector: "app-teams",
+	templateUrl: "./teams.component.html",
+	styleUrls: ["./teams.component.scss"]
 })
 export class TeamsComponent implements OnInit {
+	@ViewChild("newTeamForm") signupForm: NgForm;
 	public teams;
+	public newTeam = {
+		"Name": "",
+		"Nationality": "",
+		"Website": "",
+		"Twitter": ""
+	};
 
-	newTeam: FormGroup;
+	// newTeam: FormGroup;
 
 
-	constructor(private _teamService: TeamService, private formBuilder: FormBuilder) { }
+	constructor(private _teamService: TeamService) { }
 
 	ngOnInit() {
 		this.teams = [];
-		this.createForm();
 		this.getTeams();
 	}
 
@@ -28,30 +34,15 @@ export class TeamsComponent implements OnInit {
 		);
 	}
 
-	createTeam() {
-		this._teamService.createTeam(this.buildSaveObject()).subscribe(
-			data => { this.newTeam.reset(); this.getTeams(); },
+	public createTeam() {
+		this.newTeam.Name = this.signupForm.value.name;
+		this.newTeam.Nationality = this.signupForm.value.nationality;
+		this.newTeam.Website = this.signupForm.value.website;
+		this.newTeam.Twitter = this.signupForm.value.twitter;
+
+		this._teamService.createTeam(this.newTeam).subscribe(
+			data => { this.signupForm.reset(); this.getTeams(); },
 			err => { console.error(err); }
 		);
-	}
-
-	buildSaveObject() {
-		const formModel = this.newTeam.value;
-
-		return {
-			Name: formModel.Name as String,
-			Nationality: formModel.Nationality as String,
-			Website: formModel.Website as String,
-			Twitter: formModel.Twitter as String
-		};
-	}
-
-	createForm() {
-		this.newTeam = this.formBuilder.group({
-			Name: ['', Validators.required],
-			Nationality: '',
-			Website: '',
-			Twitter: ''
-		});
 	}
 }
