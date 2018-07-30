@@ -34,7 +34,7 @@ export class TeamsComponent implements OnInit {
 		);
 	}
 
-	public createTeam() {
+	public createTeam(formData: NgForm) {
 		this.newTeam.Name = this.signupForm.value.name;
 		this.newTeam.Nationality = this.signupForm.value.nationality;
 		this.newTeam.Website = this.signupForm.value.website;
