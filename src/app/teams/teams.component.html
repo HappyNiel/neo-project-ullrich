@@ -1,3 +1,72 @@
-<p>
-  teams works!
-</p>
+<h1>Teams</h1>
+<div class="TeamsContainer">
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Nationality</th>
+				<th>Website</th>
+				<th>Twitter</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let team of teams">
+				<td>{{ team.fields.Name }}</td>
+				<td>{{ team.fields.Nationality }}</td>
+				<td>{{ team.fields.Website }}</td>
+				<td>{{ team.fields.Twitter }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<section>
+	<h3>Create a new team</h3>
+	<form class="Form" (ngSubmit)="createTeam(newTeamForm)" #newTeamForm="ngForm">
+		<div class="Segment form-group">
+			<label for="name">Team name:</label>
+			<input
+				type="text"
+				id="name"
+				class="form-control"
+				name="name"
+				ngModel
+				required>
+		</div>
+		<div class="Segment form-group">
+			<label for="nationality">Nationality:</label>
+			<input
+				type="text"
+				id="nationality"
+				class="form-control"
+				name="nationality"
+				ngModel
+				required>
+		</div>
+		<div class="Segment form-group">
+			<label for="website">Website:</label>
+			<input 
+				type="url"
+				id="website"
+				class="form-control"
+				name="website"
+				ngModel>
+		</div>
+		<div class="Segment form-group">
+			<label for="twitter">Twitter:</label>
+			<input 
+				type="text"
+				id="twitter"
+				class="form-control"
+				name="twitter"
+				placeholder="@TwitterHandle"
+				ngModel>
+		</div>
+		<button type="submit" class="Button" [disabled]="!newTeamForm.valid">
+			Create team
+		</button>
+		<button type="button" class="Button Ghost" (click)="clearForm()">
+			Cancel
+		</button>
+	</form>
+</section>

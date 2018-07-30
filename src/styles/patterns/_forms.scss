@@ -1,0 +1,27 @@
+/**
+Styling code for forms and input elements.
+*/
+
+@import "../general-styles";
+
+input[type=text], input[type=email], input[type=url], textarea{
+	padding: 0.3rem 0.5rem;
+	border: 1px solid $Grey;
+
+	&:focus{
+	border-color: $DarkGrey;
+	}
+}
+
+.Form{
+	.Segment{
+		margin-bottom: 0.7rem;
+		display: block;
+		
+		label{
+			display: block;
+			font-size: 0.8rem;
+			color: $Text;
+		}
+	}
+}
