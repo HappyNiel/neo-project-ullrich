@@ -19,7 +19,8 @@ import { LoginComponent } 					from "./login/login.component";
 import { FooterComponent } 					from "./footer/footer.component";
 
 // Sservices
-import { TeamService }						from "./services/team.service";
+import { TeamService }	from "./services/team.service";
+import { UserService }	from "./services/user.service";
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { TeamService }						from "./services/team.service";
 		ReactiveFormsModule
 	],
 	providers: [
-		TeamService
+		TeamService,
+		UserService
 	],
 	bootstrap: [AppComponent]
 })
