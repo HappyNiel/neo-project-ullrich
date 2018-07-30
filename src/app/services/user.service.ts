@@ -7,7 +7,11 @@ export class UserService {
 	
 	constructor(private http: HttpClient) {}
 
-	getUserInfo() {
+	public getUserInfo() {
 		return this.http.get("/api/team");
+	}
+
+	public updateUserInfo(formObject) {
+
 	}
 }

@@ -18,7 +18,7 @@ UserTable.prototype.findUserByDiscordId = function (discordID, cb){
 }
 
 UserTable.prototype.findOrCreateUserByDiscordId = function (discordId, discordAuth, cb){
-    console.log(`Discord auth: ${discordAuth}`);
+    console.log(`Discord auth: ${discordAuth}`); //TODO: remove console log
     base('User').select({
         filterByFormula: `{Discord} = '${discordId}'`,
         maxRecords: 1
