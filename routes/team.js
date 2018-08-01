@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var TeamTable = require('../database/team');
+var EntryTable = require('../database/entry');
+var DriverTable = require('../database/driver');
 
 router.get('/:id', function(req, res, next) {
     let teamId = req.params.id;
@@ -45,5 +47,68 @@ router.get('/', function(req, res, next) {
         
     })
 });
+
+//Team Entries
+router.get('/:id/entry', function(req, res) {
+    let teamId = req.params.id;
+    EntryTable.findByTeam(teamId, function(err, records){
+        if(err){
+            console.log(`Error is ${err}`)
+            console.error(err);
+            //send back error response
+            throw err;
+        }
+        res.status(200).send(records);
+    })
+});
+
+router.post('/:id/entry', function(req, res){
+    EntryTable.createEntry(req.params.id, req.body, function(err, record){
+        if(err){
+            //send back error response
+            throw err;
+        }
+        res.status(200).send(record);
+    })
+});
+
+//Entry Drivers
+router.get('/:teamId/entry/:entryId/drivers', function(req, res) {
+    let entryId = req.params.entryId;
+    DriverTable.findByEntry(entryId, function(err, records){
+        if(err){
+            console.log(`Error is ${err}`)
+            console.error(err);
+            //send back error response
+            throw err;
+        }
+        res.status(200).send(records);
+    })
+});
+
+router.post('/:teamId/entry/:entryId/drivers', function(req, res){
+    DriverTable.createEntry(req.params.entryId, req.body, function(err, record){
+        if(err){
+            //send back error response
+            throw err;
+        }
+        res.status(200).send(record);
+    })
+});
+
+//Team Drivers
+router.get('/:teamId/drivers', function(req, res) {
+    let teamId = req.params.teamId;
+    DriverTable.findByTeam(teamId, function(err, records){
+        if(err){
+            console.log(`Error is ${err}`)
+            console.error(err);
+            //send back error response
+            throw err;
+        }
+        res.status(200).send(records);
+    })
+});
+
 
 module.exports = router;
