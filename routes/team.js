@@ -21,7 +21,7 @@ router.post('/', function(req, res){
     //assign the currently logged in user as the manager by default
     team.Manager = [auth_user.airtableId]
 
-    TeamTable.createTeam(req.body, function(err, record){
+    TeamTable.createTeam(team, function(err, record){
         if(err){
             //send back error response
             throw err;
