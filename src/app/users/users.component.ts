@@ -27,13 +27,13 @@ export class UsersComponent implements OnInit {
 
 	ngOnInit() {
 		this.getUserId();
-		this.getUserInfo(this._userRecordId);
 		console.log(this.userInfo);
 	}
 
 	private getUserId() {
 		this.userService.getUserId().subscribe(discordData => {
 			this._userRecordId = discordData["airtableId"];
+			this.getUserInfo(this._userRecordId);
 		},
 		err => { 
 			console.error(err); 
@@ -42,7 +42,7 @@ export class UsersComponent implements OnInit {
 
 	public getUserInfo(id: string) {
 		this.userService.getUserInfo(id).subscribe(dataObject => {
-			this.preFillDiscordUsername(dataObject);
+			this.preFillDiscordUsername(dataObject["fields"]);
 		},
 		err => { 
 			console.error(err); 

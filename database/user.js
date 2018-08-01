@@ -49,7 +49,7 @@ UserTable.prototype.findById = function (id, cb){
     base('User').find(id, function(err, record) {
         if (err) { console.error(err); cb(err, null); }
         console.log(record);
-        cb(null, record.fields);
+        cb(null, record);
     });
 }
 
