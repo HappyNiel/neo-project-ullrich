@@ -4,14 +4,14 @@ import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class UserService {
-	
+
 	constructor(private http: HttpClient) {}
 
-	public getUserInfo() {
-		return this.http.get("/api/team");
+	public getUserId() {
+		return this.http.get("/api/auth/info");
 	}
 
-	public updateUserInfo(formObject) {
-
+	public getUserInfo(id: string) {
+		return this.http.get(`api/user/${id}`);
 	}
 }
