@@ -50,7 +50,9 @@ export class UsersComponent implements OnInit {
 	}
 
 	public preFillDiscordUsername(data) {
-		this.userInfo["DiscordUsername"] = data["DiscordUsername"];
+		// this.userInfo["FirstName"] = data.FirstName;
+		// this.userInfo["LastName"] = data.LastName;
+		this.userInfo["DiscordUsername"] = data.DiscordUsername;
 	}
 
 	public handleForm(form: NgForm): void {
