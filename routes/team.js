@@ -4,14 +4,16 @@ var TeamTable = require('../database/team');
 var EntryTable = require('../database/entry');
 var DriverTable = require('../database/driver');
 
-router.get('/:id', function(req, res) {
+router.get('/:id', function(req, res, next) {
     let teamId = req.params.id;
     TeamTable.findById(teamId, function(err, record){
         if(err){
             //send back error response
-            throw err;
+            next(err);
+        } else{
+            res.status(200).send(record);
         }
-        res.status(200).send(record);
+        
     })
 });
 
@@ -26,19 +28,23 @@ router.post('/', function(req, res){
     TeamTable.createTeam(team, function(err, record){
         if(err){
             //send back error response
-            throw err;
+            next(err);
+        }else{
+            res.status(200).send(record);
         }
-        res.status(200).send(record);
+        
     })
 });
 
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
     TeamTable.getAllTeams(function(err, record){
         if(err){
             //send back error response
-            throw err;
+            next(err);
+        } else{
+            res.status(200).send(record);
         }
-        res.status(200).send(record);
+        
     })
 });
 

@@ -63,15 +63,19 @@ app.use('/api/user', user);
 app.use('/api/team', team);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  console.error(err.stack)
-  res.status(404).send('Not Found!')
-});
+app.use(function (req, res, next) {
+    console.log("404 handler");
+    res.status(404).send("Sorry can't find that!");
+})
 
 // error handler
 app.use(function(err, req, res, next) {
-  console.error(err.stack)
-  res.status(500).send('Something broke!')
+    console.error(err.message);
+    if (res.headersSent) {
+        return next(err)
+    }
+    if (!err.statusCode) err.statusCode = 500; // Sets a generic server error status code if none is part of the err
+    res.status(err.statusCode).send(err.message);
 });
 
 console.log('Server Ready!');
