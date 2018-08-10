@@ -1,6 +1,10 @@
-import { Component, OnInit, ViewChild }	from "@angular/core";
+import { Component, OnInit }	from "@angular/core";
 import { UserService } 			from "../services/user.service";
-import { NgForm } 				from "@angular/forms";
+import { 
+	NgForm, 
+	FormGroup, 
+	FormControl }
+from "@angular/forms";
 
 @Component({
 	selector: "app-users",
@@ -8,7 +12,8 @@ import { NgForm } 				from "@angular/forms";
 	styleUrls: ["./users.component.scss"]
 })
 export class UsersComponent implements OnInit {
-	@ViewChild("userForm") userForm: NgForm;
+	public userForm: FormGroup;
+
 	private _userRecordId: string;
 	public userInfo: Object = {
 		"FirstName": "",
@@ -23,39 +28,58 @@ export class UsersComponent implements OnInit {
 		"Country": ""
 	};
 
+	public testInfo: Object = {
+		"FirstName": "Niel",
+		"LastName": "Hekkens",
+		"Email": "nielhekkens@gmail.com",
+		"DiscordUsername": "NielHekkens",
+		"DiscordDescriminator": "",
+		"Address": "",
+		"Zipcode": "",
+		"State": "",
+		"City": "Eindhoven",
+		"Country": "The Netherlands"
+	};
+
 	constructor(private userService: UserService) { }
 
 	ngOnInit() {
 		this.getUserId();
-		console.log(this.userInfo);
+		this.initiateForm(this.testInfo);
+	}
+
+	private initiateForm(userData): void {
+		this.userForm = new FormGroup({
+			"firstname": new FormControl(userData.FirstName),
+			"lastname": new FormControl(userData.LastName),
+			"email": new FormControl(userData.Email),
+			"discord": new FormControl(userData.DiscordUsername),
+			"address": new FormControl(userData.Address),
+			"zipcode": new FormControl(userData.Zipcode),
+			"state": new FormControl(userData.State),
+			"city": new FormControl(userData.City),
+			"country": new FormControl(userData.Country)
+		});
 	}
 
 	private getUserId() {
 		this.userService.getUserId().subscribe(discordData => {
 			this._userRecordId = discordData["airtableId"];
 			this.getUserInfo(this._userRecordId);
-		},
-		err => { 
-			console.error(err); 
 		});
 	}
 
 	public getUserInfo(id: string) {
 		this.userService.getUserInfo(id).subscribe(dataObject => {
-			this.preFillDiscordUsername(dataObject["fields"]);
-		},
-		err => { 
-			console.error(err); 
+			this.preFillObjectDiscordUsername(dataObject["fields"]);
 		});
 	}
 
-	public preFillDiscordUsername(data) {
-		// this.userInfo["FirstName"] = data.FirstName;
-		// this.userInfo["LastName"] = data.LastName;
+	public preFillObjectDiscordUsername(data) {
 		this.userInfo["DiscordUsername"] = data.DiscordUsername;
 	}
 
-	public handleForm(form: NgForm): void {
+	public onSubmitForm(form: NgForm): void {
 		this.saveFormInObject();
 		// this.userService.updateUserInfo(this.userForm);
 	}

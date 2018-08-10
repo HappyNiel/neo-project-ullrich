@@ -1,15 +1,14 @@
 <h1>User settings</h1>
 
 <h3>Contact information</h3>
-<form class="Form" (ngSubmit)="handleForm(userForm)" #userForm="ngForm">
+<form class="Form" [formGroup]="userForm">
 	<div class="Segment form-group">
 		<label for="FirstName">First name:</label>
 		<input
 			type="text"
 			id="FirstName"
 			class="form-control"
-			name="firstname"
-			ngModel
+			formControlName="firstname"
 			required>
 	</div>
 	<div class="Segment form-group">
@@ -18,8 +17,7 @@
 			type="text"
 			id="LastName"
 			class="form-control"
-			name="lastname"
-			ngModel
+			formControlName="lastname"
 			required>
 	</div>
 	<div class="Segment form-group">
@@ -28,8 +26,7 @@
 			type="email"
 			id="Email"
 			class="form-control"
-			name="email"
-			ngModel
+			formControlName="email"
 			required>
 	</div>
 	<div class="Segment form-group">
@@ -38,8 +35,7 @@
 			type="text"
 			id="Discord"
 			class="form-control"
-			name="discord"
-			ngModel
+			formControlName="discord"
 			required>
 	</div>
 	<hr>
@@ -52,8 +48,7 @@
 			type="text"
 			id="Adress"
 			class="form-control"
-			name="address"
-			ngModel
+			formControlName="address"
 			required>
 	</div>
 	<div class="Segment form-group">
@@ -62,8 +57,7 @@
 			type="text"
 			id="Zipcode"
 			class="form-control"
-			name="zipcode"
-			ngModel
+			formControlName="zipcode"
 			required>
 	</div>
 	<div class="Segment form-group">
@@ -72,8 +66,7 @@
 			type="text"
 			id="City"
 			class="form-control"
-			name="city"
-			ngModel
+			formControlName="city"
 			required>
 	</div>
 	<div class="Segment form-group">
@@ -82,8 +75,7 @@
 			type="text"
 			id="State"
 			class="form-control"
-			name="state"
-			ngModel>
+			formControlName="state">
 	</div>
 	<div class="Segment form-group">
 		<label for="Country">Country:</label>
@@ -91,8 +83,7 @@
 			type="text"
 			id="Country"
 			class="form-control"
-			name="country"
-			ngModel
+			formControlName="country"
 			required>
 	</div>
 	<button type="submit" class="Button" [disabled]="!userForm.valid">
