@@ -1,10 +1,11 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } 			from '@angular/core';
 
-import { UsersComponent } 	from '../users/users.component';
-import { TeamsComponent } 	from '../teams/teams.component';
-import { AdminComponent } 	from '../admin/admin.component';
-import { LoginComponent } 	from '../login/login.component';
+import { UsersComponent } 		from '../users/users.component';
+import { TeamsComponent } 		from '../teams/teams.component';
+import { TeamDetailComponent}	from '../teams/team-detail/team-detail.component';
+import { AdminComponent } 		from '../admin/admin.component';
+import { LoginComponent } 		from '../login/login.component';
 
 const routes: Routes = [
 	{ path: '', component: LoginComponent },
@@ -12,7 +13,7 @@ const routes: Routes = [
 	{ path: 'profile', component: UsersComponent },
 	
 	{ path: 'team', component: TeamsComponent },
-	{ path: 'team/:team_id', component: TeamsComponent },
+	{ path: 'team/:team_id', component: TeamDetailComponent },
 	
 	// TODO: Create component where managers can edit their team information.
 	// { path: 'team/:team_id/edit', component: TeamsComponent},

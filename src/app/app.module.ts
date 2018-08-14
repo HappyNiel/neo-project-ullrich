@@ -18,8 +18,10 @@ import { AppRoutingModule } 				from "./routing/app-routing.module";
 import { LoginComponent } 					from "./login/login.component";
 import { FooterComponent } 					from "./footer/footer.component";
 
-// Sservices
+// Services
 import { TeamService }						from "./services/team.service";
+import { UserService }						from "./services/user.service";
+import { TeamDetailComponent } 				from './teams/team-detail/team-detail.component';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { TeamService }						from "./services/team.service";
 		UsersComponent,
 		DriverRegistrationsComponent,
 		LoginComponent,
-		FooterComponent
+		FooterComponent,
+		TeamDetailComponent
 	],
 	imports: [
 		BrowserModule,
@@ -42,7 +45,8 @@ import { TeamService }						from "./services/team.service";
 		ReactiveFormsModule
 	],
 	providers: [
-		TeamService
+		TeamService,
+		UserService
 	],
 	bootstrap: [AppComponent]
 })
