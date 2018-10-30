@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { TeamService } from "../services/team.service";
-import { FormGroup, FormControl, FormBuilder, Validators, NgForm } from "@angular/forms";
+import { NgForm } from "@angular/forms";
 
 @Component({
 	selector: "app-teams",

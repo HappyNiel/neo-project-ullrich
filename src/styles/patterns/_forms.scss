@@ -7,6 +7,7 @@ Styling code for forms and input elements.
 input[type=text], input[type=email], input[type=url], textarea{
 	padding: 0.3rem 0.5rem;
 	border: 1px solid $Grey;
+	width: 12rem;
 
 	&:focus{
 	border-color: $DarkGrey;
