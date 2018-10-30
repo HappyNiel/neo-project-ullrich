@@ -2,24 +2,24 @@ var express = require('express');
 var router = express.Router();
 var UserTable = require('../database/user');
 
-router.get('/:id', function(req, res) {
+router.get('/:id', function(req, res, next) {
     let userId = req.params.id;
     UserTable.findById(userId, function(err, record){
         if(err){
-            //send back error response
-            throw err;
+            next(err);
+        } else {
+            res.status(200).send(record);
         }
-        res.status(200).send(record);
     })
 });
 
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
     UserTable.getAllUsers(function(err, record){
         if(err){
-            //send back error response
-            throw err;
+            next(err);
+        } else {
+            res.status(200).send(record);
         }
-        res.status(200).send(record);
     })
 });
 
