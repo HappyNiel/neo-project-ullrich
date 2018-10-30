@@ -10,7 +10,7 @@ router.get('/:id', function(req, res, next) {
         if(err){
             //send back error response
             next(err);
-        } else{
+        } else {
             res.status(200).send(record);
         }
         
@@ -29,7 +29,7 @@ router.post('/', function(req, res){
         if(err){
             //send back error response
             next(err);
-        }else{
+        } else {
             res.status(200).send(record);
         }
         
@@ -41,72 +41,65 @@ router.get('/', function(req, res, next) {
         if(err){
             //send back error response
             next(err);
-        } else{
+        } else {
             res.status(200).send(record);
         }
-        
     })
 });
 
 //Team Entries
-router.get('/:id/entry', function(req, res) {
+router.get('/:id/entry', function(req, res, next) {
     let teamId = req.params.id;
     EntryTable.findByTeam(teamId, function(err, records){
         if(err){
-            console.log(`Error is ${err}`)
-            console.error(err);
-            //send back error response
-            throw err;
+            next(err);
+        } else {
+            res.status(200).send(records);
         }
-        res.status(200).send(records);
     })
 });
 
-router.post('/:id/entry', function(req, res){
+router.post('/:id/entry', function(req, res, next){
     EntryTable.createEntry(req.params.id, req.body, function(err, record){
         if(err){
-            //send back error response
-            throw err;
+            next(err);
+        } else {
+            res.status(200).send(record);
         }
-        res.status(200).send(record);
     })
 });
 
 //Entry Drivers
-router.get('/:teamId/entry/:entryId/drivers', function(req, res) {
+router.get('/:teamId/entry/:entryId/drivers', function(req, res, next) {
     let entryId = req.params.entryId;
     DriverTable.findByEntry(entryId, function(err, records){
         if(err){
-            console.log(`Error is ${err}`)
-            console.error(err);
-            //send back error response
-            throw err;
+            next(err);
+        } else {
+            res.status(200).send(records);
         }
-        res.status(200).send(records);
     })
 });
 
-router.post('/:teamId/entry/:entryId/drivers', function(req, res){
+router.post('/:teamId/entry/:entryId/drivers', function(req, res, next){
     DriverTable.createEntry(req.params.entryId, req.body, function(err, record){
         if(err){
-            //send back error response
-            throw err;
+            next(err);
+        } else {
+            res.status(200).send(record);
         }
-        res.status(200).send(record);
     })
 });
 
 //Team Drivers
-router.get('/:teamId/drivers', function(req, res) {
+router.get('/:teamId/drivers', function(req, res, next) {
     let teamId = req.params.teamId;
     DriverTable.findByTeam(teamId, function(err, records){
         if(err){
-            console.log(`Error is ${err}`)
-            console.error(err);
-            //send back error response
-            throw err;
+            next(err);
+        } else {
+            res.status(200).send(records);
         }
-        res.status(200).send(records);
     })
 });
 
