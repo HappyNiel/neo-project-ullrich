@@ -6,6 +6,8 @@ import {
 	FormsModule
 } from "@angular/forms";
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 import { AppComponent } 					from "./app.component";
 import { HeaderComponent } 					from "./header/header.component";
@@ -20,6 +22,7 @@ import { FooterComponent } 					from "./footer/footer.component";
 
 // Sservices
 import { TeamService }						from "./services/team.service";
+import { TeamDetailComponent } from './teams/detail/detail.component';
 
 
 @NgModule({
@@ -32,14 +35,16 @@ import { TeamService }						from "./services/team.service";
 		UsersComponent,
 		DriverRegistrationsComponent,
 		LoginComponent,
-		FooterComponent
+		FooterComponent,
+		TeamDetailComponent
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
 		FormsModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		NgbModule
 	],
 	providers: [
 		TeamService

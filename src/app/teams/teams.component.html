@@ -11,7 +11,7 @@
 		</thead>
 		<tbody>
 			<tr *ngFor="let team of teams">
-				<td>{{ team.fields.Name }}</td>
+				<td><a [routerLink]="['/team/', team.id]">{{ team.fields.Name }}</a></td>
 				<td>{{ team.fields.Nationality }}</td>
 				<td>{{ team.fields.Website }}</td>
 				<td>{{ team.fields.Twitter }}</td>
