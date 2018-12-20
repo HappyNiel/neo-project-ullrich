@@ -8,7 +8,7 @@ DriverTable.prototype.createDriver = function(entryID, driver, cb){
     //set the team for the entry
     driver.Entry = entryID
     base('Driver').create(driver, function(err, record) {
-        if (err) { console.error(err); cb(err, null); }
+        if (err) { console.error(err); cb(err, null); return; }
         console.log(`Driver created: record.getId()`);
         cb(null, record);
     });
@@ -27,7 +27,7 @@ DriverTable.prototype.findByEntry = function (entryID, cb){
         });
         fetchNextPage();
     }, function done(err){
-        if(err){ console.error(err); cb(err); }
+        if(err){ console.error(err); cb(err); return; }
 
         cb(null, drivers);
     });
@@ -46,7 +46,7 @@ DriverTable.prototype.findByTeam = function (teamID, cb){
         });
         fetchNextPage();
     }, function done(err){
-        if(err){ console.error(err); cb(err); }
+        if(err){ console.error(err); cb(err); return; }
 
         cb(null, drivers);
     });

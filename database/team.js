@@ -7,7 +7,7 @@ var TeamTable = function () {};
 TeamTable.prototype.findById = function (id, done){
     console.log(`Finding team with ID: ${id}`);
     base('Team').find(id, function(err, record) {
-        if (err) { console.error(err); done(err, null); }
+        if (err) { console.error(err); done(err, null); return; }
         console.log(record);
         done(null, record);
     });
@@ -15,7 +15,7 @@ TeamTable.prototype.findById = function (id, done){
 
 TeamTable.prototype.createTeam = function(team, cb){
     base('Team').create(team, function(err, record) {
-        if (err) { console.error(err); cb(err, null); }
+        if (err) { console.error(err); cb(err, null); return; }
         console.log(`Team created: record.getId()`);
         cb(null, record);
     });
@@ -40,6 +40,7 @@ TeamTable.prototype.getAllTeams = function(cb){
         if (err) { 
             console.error(err);
             cb(err, null); 
+            return;
         }
         cb(null, allTeams);
     });

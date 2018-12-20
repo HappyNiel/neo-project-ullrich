@@ -23,7 +23,7 @@ UserTable.prototype.findOrCreateUserByDiscordId = function (discordId, discordAu
         filterByFormula: `{Discord} = '${discordId}'`,
         maxRecords: 1
     }).firstPage(function page(err, records){
-        if(err){ console.error(err); cb(null, err);}
+        if(err){ console.error(err); cb(null, err); return; }
 
         if(records.length == 0){
             console.log('Creating user');
@@ -36,10 +36,12 @@ UserTable.prototype.findOrCreateUserByDiscordId = function (discordId, discordAu
                 if(err){ console.error(err); cb(null, err);}
                 console.log(record);
                 cb(record);
+                return;
             })
         }else{
             console.log(records[0]);
             cb(records[0]);
+            return;
         }
     });
 }
@@ -47,9 +49,10 @@ UserTable.prototype.findOrCreateUserByDiscordId = function (discordId, discordAu
 UserTable.prototype.findById = function (id, cb){
     console.log(`Finding user with ID: ${id}`);
     base('User').find(id, function(err, record) {
-        if (err) { console.error(err); cb(err, null); }
+        if (err) { console.error(err); cb(err, null); return; }
         console.log(record);
         cb(null, record);
+        return;
     });
 }
 
@@ -72,6 +75,7 @@ UserTable.prototype.getAllUsers = function(cb){
         if (err) { 
             console.error(err);
             cb(err, null); 
+            return;
         }
         cb(null, allUsers);
     });
