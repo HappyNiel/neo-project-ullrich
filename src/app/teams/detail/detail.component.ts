@@ -31,9 +31,11 @@ export class TeamDetailComponent implements OnInit {
     };
 
     this.entries = [];
+    this.drivers = [];
 
     this.getTeam();
     this.getEntries();
+    this.getDrivers();
   }
 
   getTeam(){
@@ -46,6 +48,13 @@ export class TeamDetailComponent implements OnInit {
   getEntries(){
     this._teamService.getTeamEntries(this._teamId).subscribe(
 			data => { this.entries = data; },
+			err => { console.error(err); }
+		);
+  }
+
+  getDrivers(){
+    this._teamService.getTeamDrivers(this._teamId).subscribe(
+			data => { this.drivers = data; },
 			err => { console.error(err); }
 		);
   }

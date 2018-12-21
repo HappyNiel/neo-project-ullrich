@@ -23,4 +23,8 @@ export class TeamService {
 	getTeamEntries(id) {
 		return this.http.get(`/api/team/${id}/entry`)
 	}
+
+	getTeamDrivers(id) {
+		return this.http.get(`/api/team/${id}/drivers`)
+	}
 }

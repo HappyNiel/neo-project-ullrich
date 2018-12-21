@@ -5,6 +5,7 @@
   <table class="table">
 		<thead>
 			<tr>
+        <th>Season</th>
 				<th>Team Name</th>
 				<th>Number</th>
 				<th>Class</th>
@@ -14,6 +15,7 @@
 		</thead>
 		<tbody>
 			<tr *ngFor="let entry of entries">
+        <td>{{ entry.fields.SeasonName }}</td>
 				<td>{{ entry.fields.Name }}</td>
 				<td>{{ entry.fields.Number }}</td>
 				<td>{{ entry.fields.Class }}</td>
@@ -25,6 +27,26 @@
               <li>
           </ul>
         </td>
+			</tr>
+		</tbody>
+  </table>
+  
+  <h2>Team Drivers</h2>
+  <table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+        <th>iRating</th>
+        <th>iRacing ID</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let driver of drivers">
+				<td>{{ driver.fields.FullName }}</td>
+				<td>{{ driver.fields.Email }}</td>
+				<td>{{ driver.fields.Rating }}</td>
+        <td>{{ driver.fields.IracingID }}</td>
 			</tr>
 		</tbody>
 	</table>
