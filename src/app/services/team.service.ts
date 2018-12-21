@@ -15,4 +15,12 @@ export class TeamService {
 	createTeam(team) {
 		return this.http.post("/api/team", team);
 	}
+
+	getTeam(id) {
+		return this.http.get(`/api/team/${id}`)
+	}
+
+	getTeamEntries(id) {
+		return this.http.get(`/api/team/${id}/entry`)
+	}
 }

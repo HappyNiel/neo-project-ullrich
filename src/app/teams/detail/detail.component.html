@@ -1,3 +1,31 @@
-<p>
-  detail works!
-</p>
+<div class="container-fluid">
+  <h1>{{team.fields.Name}}</h1>
+
+  <h2>Season Entries</h2>
+  <table class="table">
+		<thead>
+			<tr>
+				<th>Team Name</th>
+				<th>Number</th>
+				<th>Class</th>
+        <th>Car</th>
+        <th>Drivers</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let entry of entries">
+				<td>{{ entry.fields.Name }}</td>
+				<td>{{ entry.fields.Number }}</td>
+				<td>{{ entry.fields.Class }}</td>
+        <td>{{ entry.fields.Car }}</td>
+        <td>
+          <ul class="list-unstyled">
+              <li *ngFor="let name of entry.fields.DriverNames">
+                  {{ name }}
+              <li>
+          </ul>
+        </td>
+			</tr>
+		</tbody>
+	</table>
+</div>
