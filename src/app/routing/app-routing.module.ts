@@ -8,6 +8,7 @@ import { TeamDetailComponent } from '../teams/detail/detail.component';
 
 import { AdminComponent } 	from '../admin/admin.component';
 import { LoginComponent } 	from '../login/login.component';
+import { CreateEntryComponent } from '../teams/detail/create-entry/create-entry.component';
 
 const routes: Routes = [
 	{ path: '', component: LoginComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
 	
 	{ path: 'team', component: TeamsComponent },
 	{ path: 'team/:team_id', component: TeamDetailComponent },
+	{ path: 'team/:team_id/entry', component: CreateEntryComponent},
 	
 	// TODO: Create component where managers can edit their team information.
 	// { path: 'team/:team_id/edit', component: TeamsComponent},

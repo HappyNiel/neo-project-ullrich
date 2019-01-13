@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <h1>{{team.fields.Name}}</h1>
+
+	<section>
+		<h3>Create a Season Etnry</h3>
+		<form class="Form" (ngSubmit)="createEntry(newEntryForm)" #newEntryForm="ngForm">
+			<div class="Segment form-group">
+				<label for="name">Entry name:</label>
+				<input
+					type="text"
+					id="name"
+					class="form-control"
+					name="name"
+					ngModel
+					required>
+			</div>
+			<div class="Segment form-group">
+				<label for="name">Class:</label>
+        <select
+          id="class"
+          class="form-control"
+          name="class"
+          ngModel
+          required>
+          <option value="">--Please select the class--</option>
+          <option value="P1">P1</option>
+          <option value="P2">P2</option>
+          <option value="GT">GTE</option>
+        </select>
+			</div>
+			<div class="Segment form-group">
+				<label for="name">Car:</label>
+        <select
+          id="car"
+          class="form-control"
+          name="car"
+          ngModel
+          required>
+          <option value="">--Please select the car--</option>
+          <option value="Porsche 919">Porsche 919 (P1)</option>
+          <option value="Audi R18">Audi R18 (P1)</option>
+          <option value="HPD">HPD ARX-01c (P2)</option>
+          <option value="Ferrari 488 GTE">Ferrari 488 GTE (GT)</option>
+          <option value="Ford GT">Ford GT (GT)</option>
+          <option value="Porsche 911">Porsche 911 GTE (GT)</option>
+        </select>
+			</div>
+			<div class="Segment form-group">
+				<label for="number">Car Number:</label>
+				<input
+					type="number"
+					id="number"
+					class="form-control"
+					name="number"
+					ngModel
+					required>
+			</div>
+			<button type="submit" class="Button" [disabled]="!newEntryForm.valid">
+				Create Entry
+			</button>
+			<button type="button" class="Button Ghost" (click)="clearForm()">
+				Cancel
+			</button>
+		</form>
+	</section>
+</div>

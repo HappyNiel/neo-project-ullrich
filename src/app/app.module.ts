@@ -23,6 +23,7 @@ import { FooterComponent } 					from "./footer/footer.component";
 // Sservices
 import { TeamService }						from "./services/team.service";
 import { TeamDetailComponent } from './teams/detail/detail.component';
+import { CreateEntryComponent } from './teams/detail/create-entry/create-entry.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { TeamDetailComponent } from './teams/detail/detail.component';
 		DriverRegistrationsComponent,
 		LoginComponent,
 		FooterComponent,
-		TeamDetailComponent
+		TeamDetailComponent,
+		CreateEntryComponent
 	],
 	imports: [
 		BrowserModule,

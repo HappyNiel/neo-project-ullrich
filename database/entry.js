@@ -35,7 +35,7 @@ EntryTable.prototype.findEntryByID = function (entryID, cb){
 
 EntryTable.prototype.createEntry = function(teamID, entry, cb){
     //set the team for the entry
-    entry.Team = teamID
+    entry.Team = [teamID]
     base('Entry').create(entry, function(err, record) {
         if (err) { console.error(err); cb(err, null); return; }
         console.log(`Entry created: record.getId()`);

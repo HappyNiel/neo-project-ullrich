@@ -32,4 +32,8 @@ export class TeamService {
 		driver.Team = [id];
 		return this.http.post(`/api/team/${id}/drivers`, driver)
 	}
+
+	createEntry(id, entry) {
+		return this.http.post(`/api/team/${id}/entry`, entry)
+	}
 }

@@ -2,6 +2,7 @@
   <h1>{{team.fields.Name}}</h1>
 
   <h2>Season Entries</h2>
+  <a [routerLink]="['/team', team.id, 'entry']">Create New Entry</a>
   <table class="table">
 		<thead>
 			<tr>
