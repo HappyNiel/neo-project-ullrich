@@ -103,5 +103,14 @@ router.get('/:teamId/drivers', function(req, res, next) {
     })
 });
 
+router.post('/:teamId/drivers', function(req, res, next){
+    DriverTable.createDriver(null, req.body, function(err, record){
+        if(err){
+            next(err);
+        } else {
+            res.status(200).send(record);
+        }
+    })
+});
 
 module.exports = router;

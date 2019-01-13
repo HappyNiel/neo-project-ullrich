@@ -27,4 +27,9 @@ export class TeamService {
 	getTeamDrivers(id) {
 		return this.http.get(`/api/team/${id}/drivers`)
 	}
+
+	addTeamDriver(id, driver) {
+		driver.Team = [id];
+		return this.http.post(`/api/team/${id}/drivers`, driver)
+	}
 }

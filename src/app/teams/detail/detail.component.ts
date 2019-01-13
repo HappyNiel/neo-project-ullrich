@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TeamService } from "../../services/team.service";
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-team-detail',
@@ -8,10 +9,20 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./detail.component.scss']
 })
 export class TeamDetailComponent implements OnInit {
-
+  @ViewChild("newDriverForm") newDriverForm: NgForm;
   public team;
   public entries;
   public drivers;
+
+  public newDriver = {
+    "FirstName": "",
+    "LastName": "",
+		"Nationality": "",
+    "Email": "",
+    "IracingID": 0,
+    "Discord": "",
+    "Team": ""
+	};
 
   private _teamId: String;
 
@@ -59,4 +70,21 @@ export class TeamDetailComponent implements OnInit {
 		);
   }
 
+  public clearNewDriverForm() {
+		this.newDriverForm.reset();
+  }
+  
+  public createDriver(formData: NgForm) {
+    this.newDriver.FirstName = this.newDriverForm.value.firstName;
+    this.newDriver.LastName = this.newDriverForm.value.lastName;
+		this.newDriver.Nationality = this.newDriverForm.value.nationality;
+		this.newDriver.Discord = this.newDriverForm.value.discord;
+    this.newDriver.Email = this.newDriverForm.value.email;
+    this.newDriver.IracingID = this.newDriverForm.value.iracingID
+
+		this._teamService.addTeamDriver(this._teamId, this.newDriver).subscribe(
+			data => { this.newDriverForm.reset(); this.getDrivers(); },
+			err => { console.error(err); }
+		);
+	}
 }

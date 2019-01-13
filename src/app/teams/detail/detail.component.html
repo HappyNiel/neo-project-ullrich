@@ -38,7 +38,8 @@
 				<th>Name</th>
 				<th>Email</th>
         <th>iRating</th>
-        <th>iRacing ID</th>
+				<th>iRacing ID</th>
+				<th>Discord ID</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -46,8 +47,79 @@
 				<td>{{ driver.fields.FullName }}</td>
 				<td>{{ driver.fields.Email }}</td>
 				<td>{{ driver.fields.Rating }}</td>
-        <td>{{ driver.fields.IracingID }}</td>
+				<td>{{ driver.fields.IracingID }}</td>
+				<td>{{ driver.fields.Discord }}</td>
 			</tr>
 		</tbody>
 	</table>
+
+	<section>
+		<h3>Add a New Driver</h3>
+		<form class="Form" (ngSubmit)="createDriver(newDriverForm)" #newDriverForm="ngForm">
+			<div class="Segment form-group">
+				<label for="name">First name:</label>
+				<input
+					type="text"
+					id="firstName"
+					class="form-control"
+					name="firstName"
+					ngModel
+					required>
+			</div>
+			<div class="Segment form-group">
+				<label for="name">Last name:</label>
+				<input
+					type="text"
+					id="lastName"
+					class="form-control"
+					name="lastName"
+					ngModel
+					required>
+			</div>
+			<div class="Segment form-group">
+				<label for="nationality">Nationality:</label>
+				<input
+					type="text"
+					id="nationality"
+					class="form-control"
+					name="nationality"
+					ngModel
+					required>
+			</div>
+			<div class="Segment form-group">
+				<label for="nationality">Email:</label>
+				<input
+					type="email"
+					id="email"
+					class="form-control"
+					name="email"
+					ngModel
+					required>
+			</div>
+			<div class="Segment form-group">
+				<label for="iracingID">iRacing ID:</label>
+				<input 
+					type="number"
+					id="iracingID"
+					class="form-control"
+					name="iracingID"
+					ngModel>
+			</div>
+			<div class="Segment form-group">
+				<label for="discord">Discord ID:</label>
+				<input 
+					type="text"
+					id="discord"
+					class="form-control"
+					name="discord"
+					ngModel>
+			</div>
+			<button type="submit" class="Button" [disabled]="!newDriverForm.valid">
+				Create Driver
+			</button>
+			<button type="button" class="Button Ghost" (click)="clearNewDriverForm()">
+				Cancel
+			</button>
+		</form>
+	</section>
 </div>
