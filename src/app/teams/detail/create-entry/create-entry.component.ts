@@ -16,6 +16,9 @@ export class CreateEntryComponent implements OnInit {
 		"Car": "",
 		"Number": ""
   };
+
+  public team;
+
   
   private _teamId: String;
 
@@ -26,9 +29,16 @@ export class CreateEntryComponent implements OnInit {
     this._route.paramMap.subscribe((params: ParamMap) =>  {
         this._teamId = params.get('team_id');
     });
+
+    this.team = {
+      "fields": {
+        "Name": ""
+      }
+    };
+    this.getTeam();
   }
 
-  public createEntry(formData: NgForm) {
+  createEntry(formData: NgForm) {
 		this.newEntry.Name = this.newEntryForm.value.name;
 		this.newEntry.Class = this.newEntryForm.value.class;
 		this.newEntry.Car = this.newEntryForm.value.car;
@@ -40,8 +50,15 @@ export class CreateEntryComponent implements OnInit {
 		);
 	}
 
-	public clearForm() {
+	clearForm() {
 		this.newEntryForm.reset();
-	}
+  }
+  
+  getTeam(){
+    this._teamService.getTeam(this._teamId).subscribe(
+			data => { this.team = data; },
+			err => { console.error(err); }
+		);
+  }
 
 }
