@@ -4,6 +4,18 @@
 	<section>
 		<h3>Create a Season Entry</h3>
 		<form class="Form" (ngSubmit)="createEntry(newEntryForm)" #newEntryForm="ngForm">
+				<div class="Segment form-group">
+						<label for="season">Season:</label>
+						<select
+							id="season"
+							class="form-control"
+							name="season"
+							ngModel
+							required>
+							<option value="">--Please select the season--</option>
+							<option [value]="season.id" *ngFor="let season of seasons">{{season.fields.Name}}</option>
+						</select>
+					</div>
 			<div class="Segment form-group">
 				<label for="name">Entry name:</label>
 				<input

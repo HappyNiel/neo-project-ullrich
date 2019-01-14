@@ -19,11 +19,12 @@ import { DriverRegistrationsComponent } 	from "./driver-registrations/driver-reg
 import { AppRoutingModule } 				from "./routing/app-routing.module";
 import { LoginComponent } 					from "./login/login.component";
 import { FooterComponent } 					from "./footer/footer.component";
-
-// Sservices
-import { TeamService }						from "./services/team.service";
 import { TeamDetailComponent } from './teams/detail/detail.component';
 import { CreateEntryComponent } from './teams/detail/create-entry/create-entry.component';
+
+// Services
+import { TeamService }						from "./services/team.service";
+import { SeasonService }					from "./services/season.service";
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { CreateEntryComponent } from './teams/detail/create-entry/create-entry.c
 		NgbModule
 	],
 	providers: [
-		TeamService
+		TeamService,
+		SeasonService
 	],
 	bootstrap: [AppComponent]
 })

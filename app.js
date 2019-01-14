@@ -58,9 +58,11 @@ app.use(passport.session());
 var auth = require('./routes/authentication');
 var user = require('./routes/user');
 var team = require('./routes/team');
+var season = require('./routes/season');
 app.use('/api/auth', auth);
 app.use('/api/user', user);
 app.use('/api/team', team);
+app.use('/api/season', season);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
