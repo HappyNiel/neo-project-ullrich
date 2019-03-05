@@ -18,7 +18,6 @@ UserTable.prototype.findUserByDiscordId = function (discordID, cb){
 }
 
 UserTable.prototype.findOrCreateUserByDiscordId = function (discordId, discordAuth, cb){
-    console.log(`Discord auth: ${discordAuth}`);
     base('User').select({
         filterByFormula: `{Discord} = '${discordId}'`,
         maxRecords: 1
@@ -34,12 +33,10 @@ UserTable.prototype.findOrCreateUserByDiscordId = function (discordId, discordAu
                 "AccessToken": discordAuth.accessToken
             }, function (err, record){
                 if(err){ console.error(err); cb(null, err);}
-                console.log(record);
                 cb(record);
                 return;
             })
         }else{
-            console.log(records[0]);
             cb(records[0]);
             return;
         }
