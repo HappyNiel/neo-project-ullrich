@@ -37,7 +37,7 @@ router.post('/', function(req, res){
 });
 
 router.get('/', function(req, res, next) {
-    TeamTable.getAllTeams(function(err, record){
+    TeamTable.getAllTeams(req.user, function(err, record){
         if(err){
             //send back error response
             next(err);

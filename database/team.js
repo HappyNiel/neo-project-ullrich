@@ -21,9 +21,16 @@ TeamTable.prototype.createTeam = function(team, cb){
     });
 }
 
-TeamTable.prototype.getAllTeams = function(cb){
+TeamTable.prototype.getAllTeams = function(user, cb){
     let allTeams = [];
-    base('Team').select({}).eachPage(function page(records, fetchNextPage) {
+    let select = {};
+
+    if (!user.isAdmin){
+        select = {
+            filterByFormula: `{Manager} = '${user.airtableId}'`
+        };
+    }
+    base('Team').select(select).eachPage(function page(records, fetchNextPage) {
         // This function (`page`) will get called for each page of records.
     
         records.forEach(function(record) {

@@ -26,12 +26,15 @@ passport.serializeUser(function(user, done) {
   done(null, user);
 });
 passport.deserializeUser(function(obj, done) {
-    var foundUser = UserTable.findOrCreateUserByDiscordId(obj.id, obj, function(record){
-        console.log(`Auth gets: ${record}`);
+    UserTable.findOrCreateUserByDiscordId(obj.id, obj, function(record){
         obj.airtableId = record.getId();
+        if(record.fields.hasOwnProperty('IsAdmin')){
+            obj.isAdmin = record.fields.IsAdmin
+        } else {
+            obj.isAdmin = false;
+        }
         done(null, obj);
     });
-    
 });
 
 var scopes = ['identify'];
