@@ -3,8 +3,9 @@ var router = express.Router();
 var TeamTable = require('../database/team');
 var EntryTable = require('../database/entry');
 var DriverTable = require('../database/driver');
+var checkAuth = require('./authentication').checkAuth
 
-router.get('/:id', async(req, res, next) => {
+router.get('/:id', checkAuth, async(req, res, next) => {
     let teamId = req.params.id;
 
     try{
@@ -15,7 +16,7 @@ router.get('/:id', async(req, res, next) => {
     }
 });
 
-router.post('/', async (req, res, next) => {
+router.post('/', checkAuth, async (req, res, next) => {
     //this will create an NPE if nobody is logged in
     //should probably wrap these functions in something to check for a logged in user first
     auth_user = req.user
@@ -31,7 +32,7 @@ router.post('/', async (req, res, next) => {
     }
 });
 
-router.get('/', async (req, res, next) => {
+router.get('/', checkAuth, async (req, res, next) => {
     try{
         teams = await TeamTable.getAllTeams(req.user)
         res.status(200).send(teams)
@@ -41,7 +42,7 @@ router.get('/', async (req, res, next) => {
 });
 
 //Team Entries
-router.get('/:id/entry', function(req, res, next) {
+router.get('/:id/entry', checkAuth, function(req, res, next) {
     let teamId = req.params.id;
     EntryTable.findByTeam(teamId, function(err, records){
         if(err){
@@ -52,7 +53,7 @@ router.get('/:id/entry', function(req, res, next) {
     })
 });
 
-router.post('/:id/entry', function(req, res, next){
+router.post('/:id/entry', checkAuth, function(req, res, next){
     EntryTable.createEntry(req.params.id, req.body, function(err, record){
         if(err){
             next(err);
@@ -63,7 +64,7 @@ router.post('/:id/entry', function(req, res, next){
 });
 
 //Entry Drivers
-router.get('/:teamId/entry/:entryId/drivers', function(req, res, next) {
+router.get('/:teamId/entry/:entryId/drivers', checkAuth, function(req, res, next) {
     let entryId = req.params.entryId;
     DriverTable.findByEntry(entryId, function(err, records){
         if(err){
@@ -74,7 +75,7 @@ router.get('/:teamId/entry/:entryId/drivers', function(req, res, next) {
     })
 });
 
-router.post('/:teamId/entry/:entryId/drivers', function(req, res, next){
+router.post('/:teamId/entry/:entryId/drivers', checkAuth, function(req, res, next){
     DriverTable.createEntry(req.params.entryId, req.body, function(err, record){
         if(err){
             next(err);
@@ -85,7 +86,7 @@ router.post('/:teamId/entry/:entryId/drivers', function(req, res, next){
 });
 
 //Team Drivers
-router.get('/:teamId/drivers', function(req, res, next) {
+router.get('/:teamId/drivers', checkAuth, function(req, res, next) {
     let teamId = req.params.teamId;
     DriverTable.findByTeam(teamId, function(err, records){
         if(err){
@@ -96,7 +97,7 @@ router.get('/:teamId/drivers', function(req, res, next) {
     })
 });
 
-router.post('/:teamId/drivers', function(req, res, next){
+router.post('/:teamId/drivers', checkAuth, function(req, res, next){
     DriverTable.createDriver(null, req.body, function(err, record){
         if(err){
             next(err);

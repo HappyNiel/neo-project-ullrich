@@ -7,7 +7,7 @@ var scopes = ['identify'];
 
 function checkAuth(req, res, next) {
     if (req.isAuthenticated()) return next();
-    res.send('not logged in :(');
+    res.send(401);
 }
 
 router.get('/login', passport.authenticate('discord', { scope: scopes }), function(req, res) {});
@@ -28,4 +28,5 @@ router.get('/info', checkAuth, function(req, res) {
 });
 
 
-module.exports = router;
+module.exports.router = router;
+module.exports.checkAuth = checkAuth;

@@ -62,7 +62,7 @@ var auth = require('./routes/authentication');
 var user = require('./routes/user');
 var team = require('./routes/team');
 var season = require('./routes/season');
-app.use('/api/auth', auth);
+app.use('/api/auth', auth.router);
 app.use('/api/user', user);
 app.use('/api/team', team);
 app.use('/api/season', season);
